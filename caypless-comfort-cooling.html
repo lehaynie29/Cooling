@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Caypless Comfort Cooling</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@400;500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #1B2B4B;
+      --red: #C0272D;
+      --offwhite: #F7F7F5;
+      --gray: #E8EAED;
+      --charcoal: #1A1A1A;
+      --mid: #5A6475;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--offwhite);
+      color: var(--charcoal);
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      height: 64px;
+    }
+
+    .nav-logo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 1.15rem;
+      color: #fff;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      line-height: 1.1;
+    }
+
+    .nav-logo span {
+      display: block;
+      font-weight: 400;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      color: rgba(255,255,255,0.6);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: #fff; }
+
+    .nav-cta {
+      background: var(--red);
+      color: #fff !important;
+      padding: 8px 20px;
+      font-family: 'Barlow Condensed', sans-serif !important;
+      font-size: 0.9rem !important;
+      font-weight: 700 !important;
+      letter-spacing: 0.08em !important;
+      text-transform: uppercase;
+      transition: background 0.2s !important;
+    }
+
+    .nav-cta:hover { background: #a31f24 !important; color: #fff !important; }
+
+    /* HERO */
+    .hero {
+      background: var(--navy);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 120px 40px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-eyebrow {
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 24px;
+    }
+
+    .hero-headline {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: clamp(4rem, 12vw, 10rem);
+      line-height: 0.92;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+    }
+
+    .hero-rule {
+      width: 100%;
+      max-width: 700px;
+      height: 3px;
+      background: var(--red);
+      margin: 20px 0;
+    }
+
+    .hero-headline-sub {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: clamp(4rem, 12vw, 10rem);
+      line-height: 0.92;
+      color: rgba(255,255,255,0.18);
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+    }
+
+    .hero-body {
+      margin-top: 40px;
+      max-width: 440px;
+      font-size: 1rem;
+      line-height: 1.65;
+      color: rgba(255,255,255,0.65);
+    }
+
+    .hero-actions {
+      margin-top: 40px;
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--red);
+      color: #fff;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 14px 32px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .btn-primary:hover { background: #a31f24; }
+
+    .btn-ghost {
+      display: inline-block;
+      border: 1px solid rgba(255,255,255,0.3);
+      color: rgba(255,255,255,0.75);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 14px 32px;
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .btn-ghost:hover { border-color: #fff; color: #fff; }
+
+    .hero-phone {
+      margin-top: 20px;
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 0.05em;
+    }
+
+    .hero-phone a {
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+    }
+
+    /* SERVICE STRIP */
+    .service-strip {
+      background: var(--red);
+      padding: 18px 40px;
+      display: flex;
+      gap: 0;
+      overflow-x: auto;
+    }
+
+    .strip-item {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.9);
+      white-space: nowrap;
+      padding-right: 40px;
+    }
+
+    .strip-item::after {
+      content: '·';
+      margin-left: 40px;
+      color: rgba(255,255,255,0.4);
+    }
+
+    .strip-item:last-child::after { display: none; }
+
+    /* SERVICES */
+    .services {
+      padding: 100px 40px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--navy);
+      line-height: 1;
+      margin-bottom: 60px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1px;
+      background: var(--gray);
+      border: 1px solid var(--gray);
+    }
+
+    .service-card {
+      background: var(--offwhite);
+      padding: 40px 32px;
+      transition: background 0.2s;
+    }
+
+    .service-card:hover { background: #fff; }
+
+    .service-icon {
+      font-size: 1.6rem;
+      margin-bottom: 20px;
+    }
+
+    .service-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      color: var(--navy);
+      margin-bottom: 12px;
+    }
+
+    .service-desc {
+      font-size: 0.88rem;
+      line-height: 1.65;
+      color: var(--mid);
+    }
+
+    /* ABOUT */
+    .about {
+      background: var(--navy);
+      padding: 100px 40px;
+    }
+
+    .about-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .about-label {
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 16px;
+    }
+
+    .about-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      font-weight: 800;
+      text-transform: uppercase;
+      color: #fff;
+      line-height: 1;
+      margin-bottom: 28px;
+    }
+
+    .about-body {
+      font-size: 0.95rem;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 20px;
+    }
+
+    .about-stats {
+      display: flex;
+      gap: 40px;
+      margin-top: 40px;
+      padding-top: 40px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .stat-number {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.45);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+
+    .about-right {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+
+    .trust-item {
+      background: rgba(255,255,255,0.05);
+      padding: 24px 28px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      transition: background 0.2s;
+    }
+
+    .trust-item:hover { background: rgba(255,255,255,0.08); }
+
+    .trust-icon {
+      font-size: 1.2rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .trust-text {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: rgba(255,255,255,0.85);
+    }
+
+    .trust-sub {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.4);
+      margin-top: 3px;
+      font-weight: 400;
+      text-transform: none;
+      letter-spacing: 0;
+    }
+
+    /* BOOK */
+    .book {
+      padding: 100px 40px;
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .book-left .section-title { margin-bottom: 20px; }
+
+    .book-body {
+      font-size: 0.95rem;
+      line-height: 1.75;
+      color: var(--mid);
+      margin-bottom: 32px;
+    }
+
+    .book-detail {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.85rem;
+      color: var(--charcoal);
+    }
+
+    .book-detail-icon { color: var(--red); font-size: 1rem; }
+
+    .book-widget {
+      background: var(--navy);
+      padding: 48px 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      min-height: 360px;
+    }
+
+    .book-widget-label {
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 20px;
+    }
+
+    .book-widget-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    .book-widget-sub {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 32px;
+      line-height: 1.6;
+    }
+
+    .btn-book {
+      display: inline-block;
+      background: var(--red);
+      color: #fff;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 16px 40px;
+      text-decoration: none;
+      width: 100%;
+      text-align: center;
+      transition: background 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-book:hover { background: #a31f24; }
+
+    .book-note {
+      margin-top: 14px;
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.3);
+    }
+
+    /* FOOTER */
+    footer {
+      background: #111825;
+      padding: 48px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    .footer-logo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 1rem;
+      color: rgba(255,255,255,0.5);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .footer-links a {
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.35);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: rgba(255,255,255,0.7); }
+
+    .footer-copy {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.2);
+      font-family: 'Barlow', sans-serif;
+    }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .hero { padding: 100px 24px 60px; }
+      .service-strip { padding: 16px 24px; }
+      .services { padding: 60px 24px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .about { padding: 60px 24px; }
+      .about-inner { grid-template-columns: 1fr; gap: 40px; }
+      .book { padding: 60px 24px; grid-template-columns: 1fr; gap: 40px; }
+      footer { padding: 36px 24px; flex-direction: column; align-items: flex-start; }
+      .footer-links { flex-wrap: wrap; gap: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">
+      Caypless<span>Comfort Cooling</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#book" class="nav-cta">Book Now</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <p class="hero-eyebrow">Auburn & Opelika's HVAC Specialists</p>
+    <h1 class="hero-headline">Stay Cool.</h1>
+    <div class="hero-rule"></div>
+    <h2 class="hero-headline-sub">All Season Long.</h2>
+    <p class="hero-body">Fast, reliable heating and cooling services for homes across the Auburn and Opelika area. Licensed, insured, and ready when you need us most.</p>
+    <div class="hero-actions">
+      <a href="#book" class="btn-primary">Book a Service</a>
+      <a href="#services" class="btn-ghost">See What We Do</a>
+    </div>
+    <p class="hero-phone">Or call us directly — <a href="tel:+13341234567">(334) 123-4567</a></p>
+  </section>
+
+  <!-- SERVICE STRIP -->
+  <div class="service-strip">
+    <span class="strip-item">AC Repair</span>
+    <span class="strip-item">AC Installation</span>
+    <span class="strip-item">Maintenance & Tune-Ups</span>
+    <span class="strip-item">Emergency Service</span>
+    <span class="strip-item">Heat Pump Service</span>
+    <span class="strip-item">Auburn & Opelika</span>
+  </div>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <p class="section-label">What We Do</p>
+    <h2 class="section-title">Our Services</h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">❄️</div>
+        <h3 class="service-name">AC Repair</h3>
+        <p class="service-desc">Not cooling the way it should? We diagnose and fix the problem fast — same-day service available for most repairs in the Auburn and Opelika area.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🔧</div>
+        <h3 class="service-name">AC Installation</h3>
+        <p class="service-desc">Upgrading your system or moving into a new home? We'll help you choose the right unit and handle the full installation from start to finish.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📋</div>
+        <h3 class="service-name">Maintenance & Tune-Ups</h3>
+        <p class="service-desc">Keep your system running at peak efficiency. Regular maintenance extends the life of your unit and catches small issues before they become big ones.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">⚡</div>
+        <h3 class="service-name">Emergency Service</h3>
+        <p class="service-desc">When your AC goes out in the middle of an Alabama summer, you need help now. We offer emergency response to get you comfortable again fast.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="about-inner">
+      <div class="about-left">
+        <p class="about-label">About Us</p>
+        <h2 class="about-title">Local Comfort,<br>Done Right.</h2>
+        <p class="about-body">Caypless Comfort Cooling is a locally owned and operated HVAC company serving the Auburn and Opelika community. We know how brutal Alabama summers can get — and we take pride in showing up fast, doing quality work, and treating every home like it's our own.</p>
+        <p class="about-body">No call centers, no runaround. Just a local pro who picks up the phone and gets the job done.</p>
+        <div class="about-stats">
+          <div>
+            <div class="stat-number">5★</div>
+            <div class="stat-label">Rated Service</div>
+          </div>
+          <div>
+            <div class="stat-number">Fast</div>
+            <div class="stat-label">Response Times</div>
+          </div>
+          <div>
+            <div class="stat-number">Local</div>
+            <div class="stat-label">Auburn & Opelika</div>
+          </div>
+        </div>
+      </div>
+      <div class="about-right">
+        <div class="trust-item">
+          <div class="trust-icon">✓</div>
+          <div>
+            <div class="trust-text">Licensed & Insured</div>
+            <div class="trust-sub">Fully credentialed for residential HVAC work in Alabama</div>
+          </div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon">✓</div>
+          <div>
+            <div class="trust-text">Same-Day Availability</div>
+            <div class="trust-sub">We work around your schedule, not the other way around</div>
+          </div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon">✓</div>
+          <div>
+            <div class="trust-text">Upfront Pricing</div>
+            <div class="trust-sub">No surprise charges — you know the cost before we start</div>
+          </div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon">✓</div>
+          <div>
+            <div class="trust-text">Locally Owned</div>
+            <div class="trust-sub">A real Auburn business, invested in this community</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOK -->
+  <section class="book" id="book">
+    <div class="book-left">
+      <p class="section-label">Scheduling</p>
+      <h2 class="section-title">Ready to Book?</h2>
+      <p class="book-body">Scheduling is quick and easy. Pick a time that works for you and we'll handle the rest. Most appointments are available within 24 hours.</p>
+      <div class="book-detail">
+        <span class="book-detail-icon">📍</span>
+        <span>Serving Auburn, Opelika, and surrounding Lee County</span>
+      </div>
+      <div class="book-detail">
+        <span class="book-detail-icon">📞</span>
+        <span>Prefer to call? <a href="tel:+13341234567" style="color:var(--red); text-decoration:none;">(334) 123-4567</a></span>
+      </div>
+      <div class="book-detail">
+        <span class="book-detail-icon">🕐</span>
+        <span>Available Monday–Saturday, 7am–6pm</span>
+      </div>
+    </div>
+    <div class="book-right">
+      <div class="book-widget">
+        <p class="book-widget-label">Online Booking</p>
+        <h3 class="book-widget-title">Schedule Your Visit</h3>
+        <p class="book-widget-sub">Pick a service, choose a time, and you're all set. Confirmation sent straight to your phone.</p>
+        <!-- HOUSECALL PRO BOOKING WIDGET GOES HERE -->
+        <button class="btn-book">Book an Appointment</button>
+        <p class="book-note">No account needed · Takes less than 2 minutes</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">Caypless Comfort Cooling</div>
+    <ul class="footer-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#book">Book Now</a></li>
+      <li><a href="tel:+13341234567">(334) 123-4567</a></li>
+    </ul>
+    <p class="footer-copy">© 2026 Caypless Comfort Cooling. Auburn, AL.</p>
+  </footer>
+
+</body>
+</html>
